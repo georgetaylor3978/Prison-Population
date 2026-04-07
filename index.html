@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prison Statistics — Stats Can 35-10-0154-01</title>
+  <meta name="description" content="Interactive dashboard of Canadian provincial and territorial correctional program statistics, sourced from Statistics Canada Table 35-10-0154-01." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body class="dark">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="https://www.youtube.com/watch?v=pn2gda_phAA" target="_blank" rel="noopener" class="logo-link" title="Visit source video">
+        <img src="hobo.jpg" alt="Hobo logo" class="logo-img" />
+      </a>
+      <div class="header-text">
+        <h1 class="site-title">Prison Statistics</h1>
+        <p class="site-subtitle">Stats Can, Table 35-10-0154-01 — Provincial &amp; Territorial Correctional Programs</p>
+      </div>
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle light/dark theme">
+        <span class="theme-icon">☀️</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- CONTROLS -->
+    <section class="controls-bar" aria-label="Dashboard filters">
+      <div class="controls-inner">
+
+        <!-- Date range -->
+        <div class="control-group">
+          <label class="control-label">Date Range</label>
+          <div class="range-row">
+            <select id="year-start" class="ctrl-select" aria-label="Start year"></select>
+            <span class="range-sep">to</span>
+            <select id="year-end" class="ctrl-select" aria-label="End year"></select>
+          </div>
+          <div class="quick-btns" role="group" aria-label="Quick date range">
+            <button class="quick-btn" data-years="10">10 yr</button>
+            <button class="quick-btn" data-years="20">20 yr</button>
+            <button class="quick-btn" data-years="0">All</button>
+          </div>
+        </div>
+
+        <!-- Metric selector -->
+        <div class="control-group">
+          <label class="control-label">Metrics (multi-select)</label>
+          <div id="metric-pills" class="metric-pills" role="group" aria-label="Select metrics"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KPI CARDS -->
+    <section class="kpi-section" aria-label="Key Performance Indicators">
+      <div id="kpi-cards" class="kpi-grid"></div>
+    </section>
+
+    <!-- MAIN CHART -->
+    <section class="chart-section">
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2 class="chart-title">Trends Over Time</h2>
+          <p class="chart-subtitle">Selected metrics across the chosen date range</p>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="main-chart" aria-label="Trends over time chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- CUSTODY BREAKDOWN CHART -->
+    <section class="chart-section two-col">
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2 class="chart-title">Custody Breakdown</h2>
+          <p class="chart-subtitle">Sentenced · Remand · Other (children of Total Actual-In)</p>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="custody-chart" aria-label="Custody breakdown stacked chart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2 class="chart-title">Community Supervision</h2>
+          <p class="chart-subtitle">Probation · Conditional · Parole (children of Total Community)</p>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="community-chart" aria-label="Community supervision breakdown chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- GROWTH TABLE -->
+    <section class="table-section">
+      <div class="table-card">
+        <div class="chart-header">
+          <h2 class="chart-title">Growth Over Time</h2>
+          <p class="chart-subtitle">Year-over-year change for each selected metric</p>
+        </div>
+        <div class="table-scroll">
+          <table id="growth-table" class="data-table">
+            <thead id="growth-thead"></thead>
+            <tbody id="growth-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Source: <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510015401" target="_blank" rel="noopener">Statistics Canada, Table 35-10-0154-01</a> · Data: Corrections Key Indicator Report for Adults</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

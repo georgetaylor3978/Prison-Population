@@ -1,0 +1,37 @@
+Dashboard Name:  Prison Statistics
+Subscript/Description:  Stats Can, Table 35-10-0154-01
+
+Folder:
+	C:\Users\kroon\.gemini\antigravity\playground\Prison Pop
+
+Note: Make the files referential, so I can move the folder later
+
+Dev Source: https://www150.statcan.gc.ca/t1/tbl1/en/cv!recreate.action?pid=3510015401&selectedNodeIds=&checkedLevels=0D1,1D1,1D2&refPeriods=19780101,20230101&dimensionLayouts=layout2,layout3,layout2&vectorDisplay=false
+
+
+
+
+Objective: (for antigravity)
+ - Build a dashboard that displays the prison population data in a meaningful way. There are two files in the folder: one is the meta data (parent/child info) and the other is the raw data needing display/analysis. 
+ - Allow light & dark themes toggle at the top
+ - allow for date ranges to be selected
+ - allow multiple items to be selected
+ - ensure no double counting of totals occurs between child and parent when running subtotals in graphs or metrics
+ - provide graph(s)
+ - metrics on growth over time
+ - have round logo at the top banner that incudes image of hobo (per folder). It will be a link to this site as well: https://www.youtube.com/watch?v=pn2gda_phAA
+ - Create a .bat for deployment in the folder provided. 
+ - it is my intention to update the associated data file each year so new years will be added
+ - set the default date range (upon open) as 2010 to most recent year (highest value)
+
+
+GitHub Repo:
+echo "# Prison-Population" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/georgetaylor3978/Prison-Population.git
+git push -u origin main
+
+https://github.com/georgetaylor3978/Prison-Population

@@ -1,0 +1,89 @@
+﻿"Cube Title","Product Id","CANSIM Id",URL,"Cube Notes","Archive Status",Frequency,"Start Reference Period","End Reference Period","Total number of dimensions"
+"Average counts of adults in provincial and territorial correctional programs","35100154","251-0005","https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3510015401",1,"CURRENT - a cube available to the public and that is current","Annual","1978-01-01","2023-01-01","2",
+
+"Dimension ID","Dimension name","Dimension Notes","Dimension Definitions"
+"1","Geography",,""
+"2","Custodial and community supervision",,""
+
+"Dimension ID","Member Name","Classification Code","Member ID","Parent Member ID",Terminated,"Member Notes","Member Definitions"
+"1","Provinces and Territories","[11124]","1","","",2,
+"1","Newfoundland and Labrador","[10]","2","1","",3,
+"1","Prince Edward Island","[11]","3","1","",4,
+"1","Nova Scotia","[12]","4","1","",5,
+"1","New Brunswick","[13]","5","1","",6,
+"1","Quebec","[24]","6","1","",7,
+"1","Ontario","[35]","7","1","",8,
+"1","Manitoba","[46]","8","1","",9,
+"1","Saskatchewan","[47]","9","1","",10,
+"1","Alberta","[48]","10","1","",11,
+"1","British Columbia","[59]","11","1","",12;30,
+"1","Yukon","[60]","12","1","",13,
+"1","Northwest Territories including Nunavut","","13","1","t",14,
+"1","Northwest Territories","[61]","14","1","",14,
+"1","Nunavut","[62]","15","1","",16,
+"2","Total actual-in count","","1","","",17,
+"2","Sentenced, actual-in count","","2","1","",27,
+"2","Remand, actual-in count","","3","1","",26,
+"2","Other statuses, actual-in count","","4","1","",18,
+"2","On-register count","","5","","",29,
+"2","Incarceration rates per 100,000 adults","","6","","",20,
+"2","Total community supervision count","","7","","",21;28,
+"2","Probation, community supervision","","8","7","",22;28,
+"2","Conditional sentence, community supervision","","9","7","",23;28,
+"2","Provincial parole, community supervision","","10","7","",24;28,
+"2","Probation rates per 100,000 adults","","11","","",25,
+
+Symbol Legend
+Description,Symbol
+"not available for a specific reference period","..",
+"less than the limit of detection","<LOD",
+"value rounded to 0 (zero) where there is a meaningful distinction between true zero and the value that was rounded","0s",
+"data quality: excellent","A",
+"data quality: very good","B",
+"data quality: good","C",
+"data quality: acceptable","D",
+"use with caution","E",
+"too unreliable to be published","F",
+"not applicable","...",
+"preliminary","p",
+"revised","r",
+"suppressed to meet the confidentiality requirements of the Statistics Act","x",
+"terminated","t",
+
+"Survey Code","Survey Name"
+"3313","Corrections Key Indicator Report for Adults and Youth"
+
+"Subject Code","Subject Name"
+"35","Crime and justice"
+
+"Note ID",Note
+1,"This product is based on data from the Canadian Centre for Justice and Community Safety Statistics (CCJCSS) Corrections Key Indicator Report for Adults and the Canadian Correctional Services Survey (CCSS). Fiscal year (April 1 through March 31). Due to rounding, figures may not add to totals. These data are administrative data. Although the Corrections Key Indicator Report attempts to standardize the way in which data are reported, limitations due to differences among jurisdictional operations may restrict uniform application of the definitions in some situations. For this reason, inter-jurisdictional comparisons of the data should be made with caution."
+2,"Data represent the total for all reporting jurisdictions. Data for a given year may be incomplete due to missing data for one or more jurisdictions. Comparison among years at the national level should be made with caution. Detailed data availability information can be found in the notes associated to the provinces or territories. "
+3,"Newfoundland and Labrador 'Other statuses' counts are not applicable prior to 1981/1982 and not available from 1989/1990 to 1995/1996 and from 2005/2006 onward. Community supervision counts are not available for 2009/2010 and are not available from 2018/2019 to 2020/2021. In 2021/2022, data for Newfoundland and Labrador are not available."
+4,"Prince Edward Island data are not available for 2005/2006. Other statuses counts are not available from 1983/1984 to 1995/1996. On-register counts are not available prior to 1982/1983. Conditional sentence counts are not available for 1998/1999 and 1999/2000. Remand and other statuses figures for 1978/1979 through 1981/1982 are estimated. In 2023/2024, community counts for 2022/2023 were revised. Beginning in 2023/2024, Prince Edward Island average daily counts were compiled from a new source, the Canadian Correctional Services Survey. Some changes from previous years may be due to this transition and the methodological differences between sources. Caution should be used when making comparisons to previous years."
+5,"Nova Scotia custody counts are based on the average month-end counts. Sentenced counts may include dual status inmates being held in remand and serving a custodial sentence. Prior to 2012/2013 in Nova Scotia, Other Statuses includes Temporary Absences, Unlawfully at Large, Day Parole and Intermittent sentences who are not in the facility at the time of the count. As a result, caution is recommended when making comparisons. Other statuses counts are not applicable prior to 1995/1996 and can include federal inmates, federal-provincial transfers, parole suspensions and immigration cases. The on-register count is not available prior to 1982/1983 and for 1982/1983 and 1983/1984 the count is estimated. Community supervision are not available for 2002/2003 onward. Conditional sentence counts are available for 2000/2001 only. Beginning in 2023/2024, Nova Scotia average daily counts were compiled from a new source, the Canadian Correctional Services Survey. Some changes from previous years may be due to this transition and the methodological differences between sources. Caution should be used when making comparisons to previous years."
+6,"New Brunswick began extracting data from a new system in 2000/2001. Caution is recommended when comparing data between the two periods. New Brunswick 'other statuses' and community supervision counts are not available for 2000/2001 onward. New Brunswick remand counts include persons being held in custody while awaiting a Remand Warrant of Committal. On-register counts include provincial inmates transferred to federal institutions beginning in 1998/1999. Conditional sentence counts are not available from 1998/1999 to 2000/2001. Actual-in counts from 1978/1979 through 1981/1982 are estimated."
+7,"Quebec actual-in counts from 1978/1979 to 1981/1982 are estimated, as are the 1984/1985 on-register counts. Other statuses counts are not applicable from 1982/1983 to 2018/2019; they are included in both remand and sentenced custody counts. The provincial parole count is not applicable for 1978/1979. In Quebec, as of July 2021, counts for other temporary detention are no longer counted separately as a result of a change in their methodology."
+8,"Ontario other statuses counts are not available for 1983/1984 and 1984/1985. On-register counts are not available prior to 1985/1986. Actual-in counts are estimated from 1978/1979 to 1982/1983. Remand counts are estimated for 1985/1986. In Ontario, temporary absence counts are no longer reported to the Key Indicator Report as of 2020/2021. In 2021/2022, counts for 2020/2021 for remand, sentenced custody and other temporary detention were revised for Ontario, therefore figures for the provincial and territorial totals for that period are revised and may not match figures previously published. Beginning in 2023/2024, Ontario average daily counts were compiled from a new source, the Canadian Correctional Services Survey. Some changes from previous years may be due to this transition and the methodological differences between sources. Caution should be used when making comparisons to previous years."
+9,"Manitoba sentenced counts include parole suspensions beginning in 1996/1997. The following data is not available; other statuses for 1984/1985, 1989/1990 to 1991/1992 and after 1998/1999, on-register counts prior to 1982/1983. The following counts are estimated: sentenced, remand and other statuses counts for 1978/1979 and 1979/1980; remand and other statuses counts for 1980/1981, 1981/1982 and 1999/2000; probation counts for 1984/1985."
+10,"Some year-over-year changes in counts by legal status may be due to changes in definitions or data collection methods over time. Of note, in 2017/2018, 2018/2019 and 2022/2023 moving forward, Saskatchewan average daily counts are compiled from the Canadian Correctional Services Survey (CCSS), which included dual status inmates being held in remand and serving a custodial sentence in the remand counts rather than sentenced counts. In other years, dual status inmates were included in sentenced counts. On-register but not in custody counts are not available since 2016/2017."
+11,"Alberta's 2012/2013 data are based on 10 months due to the unavailability of information for February and March, 2013. Caution is recommended when comparing 2012/2013 to other years. Other statuses counts are not available. On-register counts are not available prior to 1982/1983. Sentenced and remand counts were estimated for 1978/1979 and 1979/1980. Alberta data are unavailable for 2013/2014, and community data are unavailable for 2014/2015. Alberta began reporting provincial parole figures in February 2021. Beginning in 2023/2024, Alberta average daily counts were compiled from a new source, the Canadian Correctional Services Survey. Some changes from previous years may be due to this transition and the methodological differences between sources. Caution should be used when making comparisons to previous years."
+12,"British Columbia other statuses counts are not applicable prior to 1999/2000, and denote pre-court lock-ups and immigration holds up until 2007/2008. Beginning in 2008/2009, lock-ups are no longer included. British Columbia's increase in other status counts in 2010/2011 is the result of an increase in immigration holds. The Parole Board of Canada assumed responsibility for parole decisions from the B.C. Board of Parole in 2007/2008. For 1982/1983, community supervision counts are estimated. Due to differences in reporting practices, comparisons of British Columbia community data from 2008/2009 onwards (client counts) to previous years (caseload counts) should be made with caution. On-register counts are not available prior to 1999/2000. "
+13,"Yukon other statuses counts are only available for 1997/1998. On-register counts are not available prior to 1982/1983 and for 1987/1988. The 1991/1992 custody counts are estimated, as is the 1992/1993 probation figure. In Yukon, Other/temporary detention counts, if they are reported, may be included in total remand counts. In 2021/2022, counts for 2020/2021 for community supervision were revised for Yukon, therefore figures for the provincial and territorial totals for that period are revised and may not match figures previously published."
+14,"Due to the creation of Nunavut from the Northwest Territories, data collected prior to 1999/2000 cannot be compared to data collected after that date. The data for 1999/2000 include an unknown number of transfers from Nunavut. Other statuses counts are not available prior to 2007/2008. On-register counts are available for 1982/1983 and for 2002/2003 onward. Probation counts are not available for 1987/1988, 1993/1994 and for 1997/1998 to 2007/2008. Community supervision counts are not available prior to 2008/2009."
+16,"In 2010/2011, Nunavut adopted a new record management system and undertook a data quality review. As a result of that review, data for the years 2003/2004 to 2009/2010 were revised and data prior to 2003/2004 were removed. Community supervision counts for 2021/2022 for Nunavut are unavailable. Conditional sentence counts for 2023/2024 for Nunavut are unavailable."
+17,"The total actual-in count represents persons held in custody under sentence, remand or who are otherwise legally required to be there and who are present at the time the count is taken."
+18,"Other statuses include offenders who are being held in provincial/territorial correctional institutions for lock-ups, parole violations or suspensions, immigration holds, and those who are temporarily detained without warrants of any type, unless stated otherwise. In British Columbia, lock-ups are no longer included from 2008/2009 onward."
+20,"Incarceration rates are based on total actual-in counts, as well as current population estimates (accessed at time of data release) provided by the Centre for Demography, Statistics Canada."
+21,"Total community supervision counts are the sum of probation, conditional sentences, and provincial parole."
+22,"Prior to 1993/1994, for those jurisdictions which do not operate a provincial parole board, the probation count may include a small number of provincial parolees."
+23,"Conditional sentences have been a provincial and territorial sentencing option since September 1996."
+24,"Provincial Parole figures are available for Quebec beginning in 1979/1980; Ontario for all years; British Columbia until 2006/2007 when the Parole Board of Canada assumed responsibility for parole decisions. Alberta began reporting provincial parole figures in February 2021."
+25,"Probation rates are calculated using current population estimates (accessed at time of data release) provided by Centre for Demography, Statistics Canada."
+26,"Remand includes all inmates held on a Remand Warrant of Committal only, and inmates held on both a Remand Warrant of Committal and a Provincial/Territorial Warrant of Committal unless stated otherwise."
+27,"Sentenced counts include all inmates held on a Provincial/Territorial Warrant of Committal only, and inmates held on both a Provincial/Territorial Warrant of Committal and on an Other / Temporary Detention and may include federal sentenced offenders in a provincial or territorial facility, unless stated otherwise."
+28,"Community supervision counts are reported as average month-end counts unless otherwise noted."
+29,"On-register counts include the actual in counts as well as those actually on the institutional registers but temporarily absent from the institution at the time of the count. On-register counts can equal the total actual-in count when on-register but not in custody counts are not available."
+30,"In British Columbia, prior to 2017/2018, in a dual status situation where an offender had a conditional sentence and was on probation at month-end, the offender was counted under ‘conditional sentence’. From 2017/2018, this was reversed, and the offender is counted as on ‘probation’. Care should be taken in making annual comparisons of conditional sentence or probation counts that cross the 2017/2018 fiscal year. Beginning in 2017/2018, British Columbia average daily counts were compiled from a new source, the Canadian Correctional Services Survey. Some changes from previous years may be due to this transition and the methodological differences between sources. Caution should be used when making comparisons to previous years. On-register but not in custody counts are not available since 2017/2018."
+
+"Correction ID","Correction Date","Correction Note"
