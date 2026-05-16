@@ -24,7 +24,10 @@ const METRICS = [
 const METRIC_MAP = Object.fromEntries(METRICS.map(m => [m.key, m]));
 
 // Default active metrics (parents only + incarceration rate)
-const DEFAULT_ACTIVE = ['total_actual_in', 'incarceration_rate', 'total_community'];
+const DEFAULT_ACTIVE = ['total_actual_in', 'total_community'];
+
+// Rate metrics are excluded from the pills / main chart — they live in their own chart
+const RATE_KEYS = ['incarceration_rate', 'probation_rate'];
 
 // ── State ──────────────────────────────────────────────────
 let rawData = {};   // key → { year: string, value: number }[]
@@ -34,7 +37,7 @@ let yearStart = '2010/2011';
 let yearEnd   = '';     // populated after data loads
 
 // Chart instances
-let mainChart, custodyChart, communityChart;
+let mainChart, ratesChart, custodyChart, communityChart;
 
 // ── Helpers ────────────────────────────────────────────────
 const fmtNum = (n, unit) => {
@@ -142,9 +145,9 @@ function buildControls() {
     });
   });
 
-  // Metric pills
+  // Metric pills — rate-only metrics are excluded (they have a dedicated chart)
   const pillsEl = document.getElementById('metric-pills');
-  METRICS.forEach(m => {
+  METRICS.filter(m => !RATE_KEYS.includes(m.key)).forEach(m => {
     const pill = document.createElement('button');
     pill.id = `pill-${m.key}`;
     pill.className = 'metric-pill' + (m.isParent ? ' parent-pill' : '') + (activeMetrics.has(m.key) ? ' active' : '');
@@ -186,6 +189,7 @@ function render() {
   const years = filteredYears();
   renderKPIs(years);
   renderMainChart(years);
+  renderRatesChart(years);
   renderCustodyChart(years);
   renderCommunityChart(years);
   renderGrowthTable(years);
@@ -194,6 +198,7 @@ function render() {
 function refreshAllCharts() {
   const years = filteredYears();
   renderMainChart(years);
+  renderRatesChart(years);
   renderCustodyChart(years);
   renderCommunityChart(years);
 }
@@ -266,13 +271,14 @@ function renderMainChart(years) {
   const canvas = document.getElementById('main-chart');
   const defaults = chartThemeDefaults();
 
-  // Build datasets only for active non-child metrics (or user can pick any)
+  // Exclude rate-only metrics — they live in the dedicated rates chart
   const datasets = [];
   activeMetrics.forEach(key => {
+    if (RATE_KEYS.includes(key)) return;
     const m    = METRIC_MAP[key];
     const data = getSeriesData(key, years);
     datasets.push({
-      label: m.label + (m.unit === 'Rate' ? ' (rate)' : ''),
+      label: m.label,
       data,
       borderColor: m.color,
       backgroundColor: m.color + '22',
@@ -291,6 +297,76 @@ function renderMainChart(years) {
     options: {
       ...defaults,
       interaction: { mode: 'index', intersect: false },
+    },
+  });
+}
+
+// ── Rates chart (dual-axis: incarceration left, probation right) ────────────
+function renderRatesChart(years) {
+  const canvas = document.getElementById('rates-chart');
+  const defaults = chartThemeDefaults();
+  const textColor = isDark ? '#8b949e' : '#57606a';
+  const gridColor = isDark ? 'rgba(48,54,61,0.7)' : 'rgba(208,215,222,0.7)';
+
+  const incarM    = METRIC_MAP['incarceration_rate'];
+  const probM     = METRIC_MAP['probation_rate'];
+  const incarData = getSeriesData('incarceration_rate', years);
+  const probData  = getSeriesData('probation_rate', years);
+
+  const datasets = [
+    {
+      label: 'Incarceration Rate (per 100k)',
+      data: incarData,
+      borderColor: incarM.color,
+      backgroundColor: incarM.color + '22',
+      tension: 0.35,
+      fill: false,
+      pointRadius: years.length > 30 ? 2 : 4,
+      pointHoverRadius: 6,
+      borderWidth: 2,
+      yAxisID: 'y',
+    },
+    {
+      label: 'Probation Rate (per 100k)',
+      data: probData,
+      borderColor: probM.color,
+      backgroundColor: probM.color + '22',
+      tension: 0.35,
+      fill: false,
+      pointRadius: years.length > 30 ? 2 : 4,
+      pointHoverRadius: 6,
+      borderWidth: 2,
+      yAxisID: 'y1',
+    },
+  ];
+
+  if (ratesChart) ratesChart.destroy();
+  ratesChart = new Chart(canvas, {
+    type: 'line',
+    data: { labels: years, datasets },
+    options: {
+      ...defaults,
+      interaction: { mode: 'index', intersect: false },
+      scales: {
+        x: {
+          ticks: { color: textColor, font: { family: 'Inter', size: 10 }, maxRotation: 45 },
+          grid:  { color: gridColor },
+        },
+        y: {
+          type: 'linear',
+          position: 'left',
+          ticks: { color: incarM.color, font: { family: 'Inter', size: 10 } },
+          grid:  { color: gridColor },
+          title: { display: true, text: 'Incarceration Rate', color: incarM.color, font: { family: 'Inter', size: 11 } },
+        },
+        y1: {
+          type: 'linear',
+          position: 'right',
+          ticks: { color: probM.color, font: { family: 'Inter', size: 10 } },
+          grid:  { drawOnChartArea: false },
+          title: { display: true, text: 'Probation Rate', color: probM.color, font: { family: 'Inter', size: 11 } },
+        },
+      },
     },
   });
 }
