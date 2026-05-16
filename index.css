@@ -222,9 +222,15 @@ a:hover { text-decoration: underline; }
 /* Metric pills */
 .metric-pills {
   display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pill-row {
+  display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  max-width: 800px;
+  align-items: center;
 }
 
 .metric-pill {

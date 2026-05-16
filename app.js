@@ -145,30 +145,45 @@ function buildControls() {
     });
   });
 
-  // Metric pills — rate-only metrics are excluded (they have a dedicated chart)
+  // Metric pills — two grouped rows; rate-only metrics are excluded (dedicated chart)
   const pillsEl = document.getElementById('metric-pills');
-  METRICS.filter(m => !RATE_KEYS.includes(m.key)).forEach(m => {
-    const pill = document.createElement('button');
-    pill.id = `pill-${m.key}`;
-    pill.className = 'metric-pill' + (m.isParent ? ' parent-pill' : '') + (activeMetrics.has(m.key) ? ' active' : '');
-    pill.textContent = m.label;
-    pill.style.setProperty('--pill-color', m.color);
-    if (activeMetrics.has(m.key)) {
-      pill.style.background = m.color;
-    }
-    pill.addEventListener('click', () => {
+
+  const PILL_GROUPS = [
+    { keys: ['total_actual_in', 'sentenced', 'remand', 'other_statuses'] },
+    { keys: ['total_community', 'probation', 'conditional', 'prov_parole'] },
+  ];
+
+  PILL_GROUPS.forEach(group => {
+    const row = document.createElement('div');
+    row.className = 'pill-row';
+
+    group.keys.forEach(key => {
+      const m = METRIC_MAP[key];
+      if (!m) return;
+      const pill = document.createElement('button');
+      pill.id = `pill-${m.key}`;
+      pill.className = 'metric-pill' + (m.isParent ? ' parent-pill' : '') + (activeMetrics.has(m.key) ? ' active' : '');
+      pill.textContent = m.label;
+      pill.style.setProperty('--pill-color', m.color);
       if (activeMetrics.has(m.key)) {
-        activeMetrics.delete(m.key);
-        pill.classList.remove('active');
-        pill.style.background = '';
-      } else {
-        activeMetrics.add(m.key);
-        pill.classList.add('active');
         pill.style.background = m.color;
       }
-      render();
+      pill.addEventListener('click', () => {
+        if (activeMetrics.has(m.key)) {
+          activeMetrics.delete(m.key);
+          pill.classList.remove('active');
+          pill.style.background = '';
+        } else {
+          activeMetrics.add(m.key);
+          pill.classList.add('active');
+          pill.style.background = m.color;
+        }
+        render();
+      });
+      row.appendChild(pill);
     });
-    pillsEl.appendChild(pill);
+
+    pillsEl.appendChild(row);
   });
 }
 
